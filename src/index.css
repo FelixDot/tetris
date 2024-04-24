@@ -1,0 +1,8 @@
+body {
+  margin: 0;
+}
+
+@font-face {
+  font-family: "Jersey";
+  src: url(./font/Jersey10-Regular.ttf) format("truetype");
+}
