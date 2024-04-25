@@ -1,11 +1,11 @@
 
 import { TETROMINOS } from "../utils/tetrominos";
-import "./styles/cell.css"
 
 const Cell = ({ type }) => {
     const cellColor = TETROMINOS[type].color;
 
     const cellStyle = {
+        width: "auto",
         backgroundColor: `rgba(${cellColor}, 0.8)`,
         border: type === 0 ? "0px" : "4px solid",
         borderBottom: `4px solid rgba(${cellColor}, 0.1)`,

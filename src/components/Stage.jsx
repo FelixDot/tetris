@@ -1,8 +1,4 @@
 import Cell from "./Cell"
-import "./styles/stage.css"
-
-
-
 
 
 const Stage = ({ stage }) => {
@@ -12,9 +8,11 @@ const Stage = ({ stage }) => {
         display: "grid",
         gridTemplateRows: `repeat(${height}, calc(25vw / ${width}))`,
         gridTemplateColumns: `repeat( ${width}, 1fr)`,
+        border: "2px solid #333",
         gridGap: "1px",
         width: "100%",
-        maxWidth: "25vw"
+        maxWidth: "25vw",
+        background: "#111"
     }
 
     return (

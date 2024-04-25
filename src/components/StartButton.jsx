@@ -1,7 +1,7 @@
 import "./styles/startButton.css"
-const StarButton = ({ callback }) => {
+const StarButton = ({ onClick }) => {
     return (
-        <button className='startButton' onClick={callback}>
+        <button className='startButton' onClick={onClick}>
             Start Game
         </button>
     )

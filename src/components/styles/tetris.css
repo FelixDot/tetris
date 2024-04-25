@@ -2,11 +2,8 @@
   width: 100vw;
   height: 100vh;
   background-image: url("../../img/2107161_generated.jpg");
-  background-repeat: no-repeat;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
   background-size: cover;
+  overflow: hidden;
 }
 
 .stageWrapper {

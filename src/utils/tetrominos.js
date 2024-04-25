@@ -7,14 +7,16 @@ export const TETROMINOS = {
       [0, "I", 0, 0],
       [0, "I", 0, 0],
     ],
+    //blue
     color: "80,227,230",
   },
   J: {
     shape: [
-      [0, "J", 0, 0],
-      [0, "J", 0, 0],
-      ["J", "J", 0, 0],
+      [0, 0, "J", 0],
+      [0, 0, "J", 0],
+      [0, "J", "J", 0],
     ],
+    //pink
     color: "245, 30, 240",
   },
   L: {
@@ -23,37 +25,40 @@ export const TETROMINOS = {
       [0, "L", 0, 0],
       [0, "L", "L", 0],
     ],
+    //orange
     color: "245, 160, 30",
   },
   O: {
     shape: [
-      [0, "O", "O", 0],
-      [0, "O", "O", 0],
+      ["O", "O", 0, 0],
+      ["O", "O", 0, 0],
     ],
-    color: "0,0,0",
+    //green
+    color: "60, 179, 113",
   },
   S: {
     shape: [
-      [0, 0, "S", 0],
       [0, "S", "S", 0],
       ["S", "S", 0, 0],
     ],
+    //red
     color: "225, 25, 25",
   },
   Z: {
     shape: [
-      [0, 0, "Z", 0],
-      [0, "Z", "Z", 0],
       ["Z", "Z", 0, 0],
+      [0, "Z", "Z", 0],
     ],
+    // yellow
     color: "250, 235, 25",
   },
   T: {
     shape: [
-      [0, 0, "T", 0],
-      [0, "T", "T", 0],
-      ["T", "T", 0, 0],
+      ["T", "T", "T", 0],
+      [0, "T", 0, 0],
     ],
+
+    // purple
     color: "90, 15, 155",
   },
 }
@@ -63,5 +68,5 @@ export const getRandomTetromino = () => {
   const randomTetromino =
     tetrominos[Math.floor(Math.random() * tetrominos.length)]
 
-  return randomTetromino
+  return TETROMINOS[randomTetromino]
 }
