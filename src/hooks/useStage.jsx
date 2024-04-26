@@ -22,10 +22,14 @@ export const useStage = (player, resetPlayer) => {
                     }
                 })
             });
+            //check collison
+            if (player.collided) {
+                resetPlayer()
+            }
             return newStage
         }
         setStage(prev => updateStage(prev))
-    }, [player.tetromino, player.pos.y, player.pos.x, player.collided])
+    }, [player, resetPlayer])
 
     return [stage, setStage]
 }

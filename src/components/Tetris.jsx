@@ -4,7 +4,7 @@ import StarButton from "./StartButton"
 import { useState } from "react"
 import { usePlayer } from "../hooks/usePlayer"
 import { useStage } from "../hooks/useStage"
-import { createStage } from "../utils/gamehelper"
+import { checkCollision, createStage } from "../utils/gamehelper"
 
 import "./styles/tetris.css"
 import { getRandomTetromino } from "../utils/tetrominos"
@@ -15,22 +15,35 @@ const Tetris = () => {
 
     const [player, updatePlayerPos, resetPlayer] = usePlayer()
     console.log(getRandomTetromino())
-    const [stage, setStage] = useStage(player)
+    const [stage, setStage] = useStage(player, resetPlayer)
 
 
     const movePlayer = (direction) => {
-        updatePlayerPos({ x: direction, y: 0 })
+        if (!checkCollision(player, stage, { x: direction, y: 0 })) {
+            updatePlayerPos({ x: direction, y: 0 })
+        }
     }
 
     const startGame = () => {
         setStage(createStage())
-        console.log('start')
         resetPlayer()
+        setGameOver(false)
     }
 
     const drop = () => {
-        updatePlayerPos({ x: 0, y: 1, collided: false })
+        if (!checkCollision(player, stage, { x: 0, y: 1 })) {
+            updatePlayerPos({ x: 0, y: 1, collided: false })
+        } else {
+            // game over 
+            if (player.pos.y < 1) {
+                console.log(gameOver)
+                setGameOver(true)
+                setDropTime(null)
 
+
+            }
+            updatePlayerPos({ x: 0, y: 0, collided: true })
+        }
     }
 
     const dropPlayer = () => {
