@@ -13,8 +13,7 @@ const Tetris = () => {
     const [dropTime, setDropTime] = useState(null)
     const [gameOver, setGameOver] = useState(false)
 
-    const [player, updatePlayerPos, resetPlayer] = usePlayer()
-    console.log(getRandomTetromino())
+    const [player, updatePlayerPos, resetPlayer, playerRotate] = usePlayer()
     const [stage, setStage] = useStage(player, resetPlayer)
 
 
@@ -52,12 +51,27 @@ const Tetris = () => {
 
     const move = ({ keyCode }) => {
         if (!gameOver) {
+            //left arrow key
             if (keyCode === 37) {
                 movePlayer(-1)
-            } else if (keyCode === 39) {
+            }
+            //right arrow key
+            else if (keyCode === 39) {
                 movePlayer(1)
-            } else if (keyCode === 40) {
+            }
+            //down arrow key
+            else if (keyCode === 40) {
                 dropPlayer()
+            }
+            //up arrow key 
+            else if (keyCode === 38) {
+                //rotate right
+                playerRotate(stage, 1)
+            }
+            //z key
+            else if (keyCode === 90) {
+                //rotate left
+                playerRotate(stage, -1)
             }
         }
     }
