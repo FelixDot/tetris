@@ -17,8 +17,6 @@ export const checkCollision = (player, stage, { x: moveX, y: moveY }) => {
         //1. check that tetromino is inside the game area height(y)
         //2. check that tetromino is inside the game area width(x)
         //3. check that the cell the player is moving to is not set to clear
-        console.log(y + " " + player.pos.y + " " + moveY)
-
         if (
           !stage[y + player.pos.y + moveY] ||
           !stage[y + player.pos.y + moveY][x + player.pos.x + moveX] ||

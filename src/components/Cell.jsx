@@ -1,3 +1,4 @@
+import { React } from 'react';
 
 import { TETROMINOS } from "../utils/tetrominos";
 
@@ -16,7 +17,6 @@ const Cell = ({ type }) => {
 
     return (
         <div className="cell" style={cellStyle}>
-
         </div>
     )
 }

@@ -3,8 +3,24 @@ import { createStage } from "../utils/gamehelper"
 
 export const useStage = (player, resetPlayer) => {
     const [stage, setStage] = useState(createStage())
+    const [rowsCleared, setRowsCleared] = useState(0)
 
     useEffect(() => {
+        setRowsCleared(0)
+        const spweepRows = newStage => {
+            return newStage.reduce((ack, row) => {
+                //check if a row contains cells that are "merged" by checking if cell doesn't contains 0 
+                if (row.findIndex(cell => cell[0] === 0) === -1) {
+                    setRowsCleared(prev => prev + 1)
+
+                    //add new empty rows  
+                    ack.unshift(new Array(newStage[0].length).fill([0, "clear"]))
+                    return ack
+                }
+                ack.push(row)
+                return ack
+            }, [])
+        }
         const updateStage = prev => {
             //flush the stage
             const newStage = prev.map(row =>
@@ -25,6 +41,7 @@ export const useStage = (player, resetPlayer) => {
             //check collison
             if (player.collided) {
                 resetPlayer()
+                return spweepRows(newStage)
             }
             return newStage
         }
